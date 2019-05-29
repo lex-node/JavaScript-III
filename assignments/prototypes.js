@@ -140,4 +140,68 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
 
+function Villain(attributes)  {
+    Humanoid.call(this, attributes);
+    this.gasAttack = function(obj){
+        obj.healthPoints -= 15;
+        console.log(`${this.name} has attacked ${obj.name} with villainous laughing  gas! costs 15 healthpoints!`);
+        if(obj.healthPoints <= 0) {
+            console.log(obj.destroy());
+        }
+    }
+}
 
+Villain.protoype = Object.create(Humanoid.prototype);
+
+function Hero(attributes)  {
+    Humanoid.call(this, attributes);
+    this.ninjaChop = function(obj){
+        obj.healthPoints -= 5;
+        console.log(`${this.name} has attacked ${obj.name} with a heroic ninja chop! costs 5 healthpoints!`);
+        if(obj.healthPoints <= 0) {
+            console.log(obj.destroy());
+        }
+    }
+}
+
+Hero.protoype = Object.create(Humanoid.prototype);
+
+const joker = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+        length: 2,
+        width: 2,
+        height: 2,
+    },
+    healthPoints: 15,
+    name: 'Joker',
+    team: 'SuicideSquad',
+    weapons: [
+        'Laughing Gas',
+        'Insanity',
+    ],
+    language: 'English',
+});
+
+const batman = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+        length: 2,
+        width: 2,
+        height: 2,
+    },
+    healthPoints: 15,
+    name: 'Batman',
+    team: 'Justice League',
+    weapons: [
+        'Batarang',
+        'Martial Arts',
+    ],
+    language: 'English',
+});
+
+
+console.log(batman.ninjaChop(joker));
+console.log(batman.ninjaChop(joker));
+console.log(batman.ninjaChop(joker));
+console.log(joker.gasAttack(batman));
