@@ -26,12 +26,28 @@ const impliciturBinder = {
     }
 }
 
-impliciturBinder.findFave();
+impliciturBinder.findFave(); // shows that "this" in findFave is implciitly bound to impliciturBinder
 
 
 // Principle 3
 
 // code example for New Binding
+function CoolGuy(name, pet, artist) {
+    this.name = name;
+    this.pet = pet;
+    this.artist = artist;
+    this.hobby = "skateboarding";
+    this.girlfriend = "Gal Gadot";
+    this.car = "Lambo";
+    this.currency = "Dogecoin";
+    this.describer = function() {
+        console.log(`I am a cool guy named ${this.name}. I own a ${this.pet} and my favorite artist is ${this.artist}. I enjoy ${this.hobby}. My girlfriend is ${this.girlfriend}. I drive a ${this.car}. I keep my money in ${this.currency}`)
+    }
+}
+
+const Gabe = new CoolGuy("Gabe", "Shih-Tzu", "Picasso");
+Gabe.describer() // shows that "this" in describer is newly bound to Gabe instance of CoolGuy.
+
 
 // Principle 4
 
