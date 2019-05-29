@@ -32,23 +32,27 @@ impliciturBinder.findFave(); // shows that "this" in findFave is implciitly boun
 // Principle 3
 
 // code example for New Binding
-function CoolGuy(name, pet, artist) {
+function CoolGuy(name, pet, artist, hobby, girlfriend, car, currency) {
     this.name = name;
     this.pet = pet;
     this.artist = artist;
-    this.hobby = "skateboarding";
-    this.girlfriend = "Gal Gadot";
-    this.car = "Lambo";
-    this.currency = "Dogecoin";
+    this.hobby = hobby;
+    this.girlfriend = girlfriend;
+    this.car = car;
+    this.currency = currency;
     this.describer = function() {
         console.log(`I am a cool guy named ${this.name}. I own a ${this.pet} and my favorite artist is ${this.artist}. I enjoy ${this.hobby}. My girlfriend is ${this.girlfriend}. I drive a ${this.car}. I keep my money in ${this.currency}`)
     }
 }
 
-const Gabe = new CoolGuy("Gabe", "Shih-Tzu", "Picasso");
-Gabe.describer() // shows that "this" in describer is newly bound to Gabe instance of CoolGuy.
-
+const Gabe = new CoolGuy("Gabe", "Shih-Tzu", "Picasso", "skateboarding", "Gal Gadot", "Lambo", "Ether");
+const Kafka = new CoolGuy("Kafka", "human", "Snoopy", "eating", "Margot Robbie", "G-Wagon", "Dogecoin");
+Gabe.describer(); // shows that "this" in describer is newly bound to Gabe instance of CoolGuy.
+Gabe.describer(Kafka);// still bound to Gabe even w/ another object as a parameter.
+Kafka.describer(); //bound to Kafka object.
 
 // Principle 4
 
 // code example for Explicit Binding
+Kafka.describer.call(Gabe); //calls Kafka's describer method but on the Gabe object, so "this" reference changes to Gabe
+Gabe.describer.call(Kafka); //calls Gabe's describer method but on the Kafka object, so "this" references changes to Kafka
