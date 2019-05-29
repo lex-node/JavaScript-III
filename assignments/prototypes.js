@@ -36,7 +36,7 @@ function CharacterStats(attributes) {
     GameObject.call(this, attributes);
     this.healthPoints = attributes.healthPoints;
     this.takeDamage = function () {
-        return `${attributes.name} took damage`;
+        return `${this.name} took damage`;
     }
 }
 
@@ -59,7 +59,7 @@ function Humanoid(attributes) {
     this.weapons = attributes.weapons;
     this.language = attributes.language;
     this.greet = function () {
-        return `${attributes.name} offers a greeting in ${attributes.language}`;
+        return `${this.name} offers a greeting in ${this.language}`;
     }
 }
 
@@ -100,6 +100,7 @@ const swordsman = new Humanoid({
     name: 'Sir Mustachio',
     team: 'The Round Table',
     weapons: [
+        'Giant Sword',
         'Giant Sword',
         'Shield',
     ],
