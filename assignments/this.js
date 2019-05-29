@@ -12,8 +12,8 @@
 // Principle 1
 
 // code example for Window Binding
-const thisLogger = function(){
-console.log(this);
+const thisLogger = function () {
+    console.log(this);
 }
 thisLogger();
 // Principle 2
@@ -21,7 +21,7 @@ thisLogger();
 // code example for Implicit Binding
 const impliciturBinder = {
     favoriteImplicationForm: "insinuation",
-    findFave: function() {
+    findFave: function () {
         console.log(`${this.favoriteImplicationForm} is the best form of implication`);
     }
 }
@@ -40,7 +40,7 @@ function CoolGuy(name, pet, artist, hobby, girlfriend, car, currency) {
     this.girlfriend = girlfriend;
     this.car = car;
     this.currency = currency;
-    this.describer = function() {
+    this.describer = function () {
         console.log(`I am a cool guy named ${this.name}. I own a ${this.pet} and my favorite artist is ${this.artist}. I enjoy ${this.hobby}. My girlfriend is ${this.girlfriend}. I drive a ${this.car}. I keep my money in ${this.currency}`)
     }
 }
